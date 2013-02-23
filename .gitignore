@@ -1,6 +1,10 @@
+# Folders #
+bin/
+.settings/
+
+# Java binaries #
 *.class
 
 # Package Files #
-*.jar
 *.war
 *.ear
