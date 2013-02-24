@@ -11,9 +11,6 @@ public class ChainMailRecipes {
 
 	static void addChainMailRecipesToServer(Server s) {
 		server = s;
-
-		s.getLogger().info("Adding Chainmail recipes.");
-		
 		addChainBoots();
 		addChainChest();
 		addChainLeggins();
