@@ -10,6 +10,12 @@ public class MCHCPlugin extends JavaPlugin {
 	public void onEnable() {
 		addChainMailRecipes();
 		preventHealthRegeneration();
+		modifyHealingRecipes();
+	}
+
+	@Override
+	public void onDisable() {
+		getLogger().info("onDisable has been invoked!");
 	}
 
 	private void addChainMailRecipes() {
@@ -18,21 +24,19 @@ public class MCHCPlugin extends JavaPlugin {
 	}
 
 	private void preventHealthRegeneration() {
-		getLogger()
-				.info("Players no longer regenerate Health if they have a full hunger bar.");
+
 		getServer().getPluginManager().registerEvents(
-				new HealthRegenerationHandler(), this);
+				new HealthRegenerationHandler(getServer()), this);
 	}
 
-	@Override
-	public void onDisable() {
-		getLogger().info("onDisable has been invoked!");
+	private void modifyHealingRecipes() {
+		RecipeManager.modifyHealingRecipes(getServer());
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if (cmd.getName().equalsIgnoreCase("pos")) {
-			// doSomething
+			// doSomething 
 			return true;
 		}
 		return false;
