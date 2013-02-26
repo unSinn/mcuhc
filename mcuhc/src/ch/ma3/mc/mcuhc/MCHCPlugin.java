@@ -9,13 +9,19 @@ public class MCHCPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		addChainMailRecipes();
-		preventHealthRegeneration();
 		modifyHealingRecipes();
+		preventHealthRegeneration();
+		showPlayerHealthInTab();
 	}
 
 	@Override
 	public void onDisable() {
 		getLogger().info("onDisable has been invoked!");
+	}
+
+	private void showPlayerHealthInTab() {
+		getServer().getPluginManager().registerEvents(new TabHealthHandler(),
+				this);
 	}
 
 	private void addChainMailRecipes() {
@@ -24,7 +30,6 @@ public class MCHCPlugin extends JavaPlugin {
 	}
 
 	private void preventHealthRegeneration() {
-
 		getServer().getPluginManager().registerEvents(
 				new HealthRegenerationHandler(getServer()), this);
 	}
@@ -36,7 +41,7 @@ public class MCHCPlugin extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if (cmd.getName().equalsIgnoreCase("pos")) {
-			// doSomething 
+			// doSomething
 			return true;
 		}
 		return false;
