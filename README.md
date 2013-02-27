@@ -1,4 +1,4 @@
-mcuhc
+SoftCore
 =====
 
 A simple Minecraft (CraftBukkit) plugin targeted at Ultra Hardcore gameplay. 
