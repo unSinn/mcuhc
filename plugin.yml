@@ -1,5 +1,5 @@
-name: MCUHC
-main: ch.ma3.mc.mcuhc.MCHCPlugin
+name: SoftCore
+main: ch.ma3.mc.mcuhc.SoftcorePlugin
 version: 0.1
 commands:
   pos:

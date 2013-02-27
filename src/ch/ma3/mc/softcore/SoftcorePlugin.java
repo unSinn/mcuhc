@@ -1,11 +1,11 @@
-package ch.ma3.mc.mcuhc;
+package ch.ma3.mc.softcore;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class MCHCPlugin extends JavaPlugin {
+public class SoftcorePlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {

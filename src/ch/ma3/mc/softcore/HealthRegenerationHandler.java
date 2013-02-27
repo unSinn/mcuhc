@@ -1,4 +1,4 @@
-package ch.ma3.mc.mcuhc;
+package ch.ma3.mc.softcore;
 
 import org.bukkit.Server;
 import org.bukkit.event.EventHandler;
