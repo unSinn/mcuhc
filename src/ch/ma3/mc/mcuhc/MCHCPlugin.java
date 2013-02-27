@@ -4,8 +4,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import sun.security.action.GetLongAction;
-
 public class MCHCPlugin extends JavaPlugin {
 
 	@Override
