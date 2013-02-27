@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import sun.security.action.GetLongAction;
+
 public class MCHCPlugin extends JavaPlugin {
 
 	@Override
@@ -12,17 +14,17 @@ public class MCHCPlugin extends JavaPlugin {
 		modifyHealingRecipes();
 		preventHealthRegeneration();
 		showPlayerHealthInTab();
-		telePortawayAfterDistance();
-	}
-
-	private void telePortawayAfterDistance() {
-		getServer().getPluginManager().registerEvents(new RespawnHandler(),
-				this);
+		teleportawayAfterDeath();
 	}
 
 	@Override
 	public void onDisable() {
 		getLogger().info("onDisable has been invoked!");
+	}
+
+	private void teleportawayAfterDeath() {
+		getServer().getPluginManager().registerEvents(
+				new RespawnHandler(getServer()), this);
 	}
 
 	private void showPlayerHealthInTab() {

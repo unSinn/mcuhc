@@ -1,6 +1,8 @@
 package ch.ma3.mc.mcuhc;
 
 import org.bukkit.Location;
+import org.bukkit.Server;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,31 +12,42 @@ public class RespawnHandler implements Listener {
 
 	class Point {
 		public double x;
-		public double y;
+		public double z;
 	}
 
 	private static final int MAX_DISTANCE = 1000;
 	private static final int MIN_DISTANCE = 500;
+	private Server server;
+	private World defaultWorld;
+
+	public RespawnHandler(Server server) {
+		this.server = server;
+		defaultWorld = server.getWorlds().get(0);
+	}
 
 	@EventHandler
 	public void onRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
-		Point newspawnPoint = calcRespawnPosition(player);
-		player.teleport(new Location(player.getWorld(), newspawnPoint.x,
-				newspawnPoint.y, 100));
+		Location oldSpawnLocation = player.getWorld().getSpawnLocation();
+		Point newspawnPoint = calcRespawnPosition(oldSpawnLocation);
+
+		int height = (int) defaultWorld.getHighestBlockYAt(
+				(int) newspawnPoint.x, (int) newspawnPoint.z);
+		event.setRespawnLocation(new Location(server.getWorlds().get(0),
+				newspawnPoint.x, height, newspawnPoint.z));
 	}
 
-	private Point calcRespawnPosition(Player player) {
+	private Point calcRespawnPosition(Location location) {
 		Point spawnPoint = new Point();
-		spawnPoint.x = player.getLocation().getX();
-		spawnPoint.y = player.getLocation().getY();
+		spawnPoint.x = location.getX();
+		spawnPoint.z = location.getY();
 
 		Point awayPoint = new Point();
 
 		while (!inOrbit(spawnPoint, awayPoint)) {
 			awayPoint.x = spawnPoint.x + Math.random() * MAX_DISTANCE * 2
 					- MAX_DISTANCE;
-			awayPoint.y = spawnPoint.y + Math.random() * MAX_DISTANCE * 2
+			awayPoint.z = spawnPoint.z + Math.random() * MAX_DISTANCE * 2
 					- MAX_DISTANCE;
 		}
 
@@ -50,7 +63,7 @@ public class RespawnHandler implements Listener {
 
 	private double distance(Point a, Point b) {
 		double dx = a.x - b.x;
-		double dy = a.y - b.y;
+		double dy = a.z - b.z;
 
 		return Math.sqrt(dx * dx + dy * dy);
 	}
