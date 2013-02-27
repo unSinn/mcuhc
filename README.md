@@ -1,9 +1,8 @@
 SoftCore
 =====
 
-A simple Minecraft (CraftBukkit) plugin targeted at Ultra Hardcore gameplay. 
-This mod is not intended to be played with hardcore difficulty. Instead players are punished by beeing spawned far away after they died.
-One could say this might rather be "Softcore"...
+A simple Minecraft (CraftBukkit) plugin targeted at Ultra Hardcore gameplay without the need to enable hardcore=true.
+Instead players are punished by beeing spawned far away after they died and have to find their way back to your group.
 
 * Adds Chainmail recipies. (take a look at recipepictures/)
 * Replaces Golden Apple and Glistering Melon recipes to use Gold Ingots instead of Gold Nuggets.
