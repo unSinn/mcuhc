@@ -16,7 +16,6 @@ public class TabHealthHandler implements Listener {
 	@EventHandler
 	public void onEntityDamaged(EntityDamageEvent event) {
 		if (event.getEntity() instanceof Player) {
-			// server.getLogger().info("Player took Dmg!");
 			Player p = ((Player) event.getEntity()).getPlayer();
 			updatePlayerList(p, p.getHealth() - event.getDamage());
 
