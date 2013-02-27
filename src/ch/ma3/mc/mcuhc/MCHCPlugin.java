@@ -20,8 +20,8 @@ public class MCHCPlugin extends JavaPlugin {
 	}
 
 	private void showPlayerHealthInTab() {
-		getServer().getPluginManager().registerEvents(
-				new TabHealthHandler(getServer()), this);
+		getServer().getPluginManager().registerEvents(new TabHealthHandler(),
+				this);
 	}
 
 	private void addChainMailRecipes() {
