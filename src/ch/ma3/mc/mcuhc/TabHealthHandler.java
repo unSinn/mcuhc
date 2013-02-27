@@ -1,6 +1,5 @@
 package ch.ma3.mc.mcuhc;
 
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,14 +10,8 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class TabHealthHandler implements Listener {
 
-	private Server server;
-
 	private static float HEART_DIVIDER = 2;
 	private static int MAXHEALTH = 20;
-
-	public TabHealthHandler(Server server) {
-		this.server = server;
-	}
 
 	@EventHandler
 	public void onEntityDamaged(EntityDamageEvent event) {
