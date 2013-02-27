@@ -12,6 +12,12 @@ public class MCHCPlugin extends JavaPlugin {
 		modifyHealingRecipes();
 		preventHealthRegeneration();
 		showPlayerHealthInTab();
+		telePortawayAfterDistance();
+	}
+
+	private void telePortawayAfterDistance() {
+		getServer().getPluginManager().registerEvents(new RespawnHandler(),
+				this);
 	}
 
 	@Override
