@@ -2,6 +2,7 @@ package ch.ma3.mc.mcuhc;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MCHCPlugin extends JavaPlugin {
@@ -26,8 +27,8 @@ public class MCHCPlugin extends JavaPlugin {
 	}
 
 	private void showPlayerHealthInTab() {
-		getServer().getPluginManager().registerEvents(new TabHealthHandler(),
-				this);
+		getServer().getPluginManager().registerEvents(
+				new TabHealthHandler(this), this);
 	}
 
 	private void addChainMailRecipes() {
